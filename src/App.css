@@ -7,8 +7,8 @@ body {
   min-width: 320px; 
   min-height: 100vh; 
   font-family: Arial, sans-serif; 
-  background: #114477; 
-  color: #010101; 
+  background: #ff000065; 
+  color: #000000; 
 } 
  
 .app { 
@@ -33,7 +33,42 @@ body {
  
 .habit-card { 
   padding: 20px; 
-  border: 1px solid #215ba7; 
+  border: 1px solid #0b53e4; 
   border-radius: 12px; 
-  background: #f3eded; 
+  background: #0055ff; 
 } 
+.habit-card { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  padding: 20px; 
+  border: 1px solid #006eff; 
+  border-radius: 12px; 
+  background: #4d706a; 
+} 
+ 
+.habit-card.is-complete { 
+  border-color: #0232d000; 
+  background: #07e6c4; 
+} 
+ 
+.habit-status { 
+  font-weight: 700; 
+}
+.panel { 
+overflow: hidden; 
+border: 1px solid #000000; 
+border-radius: 16px; 
+background: #000000; 
+} 
+.panel-header, 
+.panel-content { 
+padding: 20px; 
+} 
+.panel-header { 
+border-bottom: 1px solid #000000; 
+} 
+.panel-header h2 { 
+margin: 0; 
+}
