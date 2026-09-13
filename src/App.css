@@ -7,8 +7,8 @@ body {
   min-width: 320px; 
   min-height: 100vh; 
   font-family: Arial, sans-serif; 
-  background: #ff000065; 
-  color: #000000; 
+  background: #0f172a; 
+  color: #f8fafc; 
 } 
  
 .app { 
@@ -33,9 +33,9 @@ body {
  
 .habit-card { 
   padding: 20px; 
-  border: 1px solid #0b53e4; 
+  border: 1px solid #334155; 
   border-radius: 12px; 
-  background: #0055ff; 
+  background: #1e293b; 
 } 
 .habit-card { 
   display: flex; 
@@ -43,14 +43,14 @@ body {
   justify-content: space-between; 
   gap: 16px; 
   padding: 20px; 
-  border: 1px solid #006eff; 
+  border: 1px solid #334155; 
   border-radius: 12px; 
-  background: #4d706a; 
+  background: #1e293b; 
 } 
  
 .habit-card.is-complete { 
-  border-color: #0232d000; 
-  background: #07e6c4; 
+  border-color: #10b981; 
+  background: #064e3b; 
 } 
  
 .habit-status { 
@@ -58,17 +58,40 @@ body {
 }
 .panel { 
 overflow: hidden; 
-border: 1px solid #000000; 
+border: 1px solid #334155; 
 border-radius: 16px; 
-background: #000000; 
+background: #1e293b; 
 } 
 .panel-header, 
 .panel-content { 
 padding: 20px; 
 } 
 .panel-header { 
-border-bottom: 1px solid #000000; 
+border-bottom: 1px solid #334155; 
 } 
 .panel-header h2 { 
 margin: 0; 
 }
+.habit-form { 
+  display: grid; 
+  gap: 16px; 
+} 
+ 
+.field { 
+  display: grid; 
+  gap: 6px; 
+} 
+ 
+.field input { 
+  width: 100%; 
+  padding: 10px 12px; 
+  border: 1px solid #475569; 
+  border-radius: 8px; 
+  font: inherit; 
+} 
+ 
+.form-error { 
+  margin: 0; 
+  color: #f87171; 
+  font-weight: 700; 
+} 
