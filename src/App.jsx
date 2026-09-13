@@ -29,9 +29,11 @@ export default function App() {
         <h1>Pequenos hábitos, progresso visível.</h1>
         <p>{completedCount} de {habits.length} hábitos concluídos.</p>
       </header>
+
       <Panel title="Novo hábito">
         <HabitForm />
       </Panel>
+      
       <Panel title="Hábitos de hoje">
         <HabitList />
       </Panel>
