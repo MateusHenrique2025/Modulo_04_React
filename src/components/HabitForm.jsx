@@ -1,25 +1,14 @@
 import { useState, useContext } from "react";
 import { HabitsContext } from "../context/HabitsContext";
 
-export default function HabitForm() {
-  const habitsContext = useContext(HabitsContext);
-  
-  // Se o contexto não estiver disponível, lança um erro
-  if (!habitsContext) {
-    throw new Error("HabitForm precisa estar dentro de HabitsProvider.");
-  }
-
-  const { addHabit } = habitsContext;
-  
+export default function HabitForm({ onSuccess }) {
+  const { addHabit } = useContext(HabitsContext);
   const [form, setForm] = useState({ title: "", goal: "" });
   const [error, setError] = useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setForm((currentForm) => ({
-      ...currentForm,
-      [name]: value,
-    }));
+    setForm((currentForm) => ({ ...currentForm, [name]: value }));
   }
 
   function handleSubmit(event) {
@@ -32,7 +21,6 @@ export default function HabitForm() {
       return;
     }
 
-    // Agora usamos a função do Contexto, não mais props
     addHabit({
       id: crypto.randomUUID(),
       title,
@@ -42,6 +30,7 @@ export default function HabitForm() {
 
     setForm({ title: "", goal: "" });
     setError("");
+    onSuccess?.();
   }
 
   return (

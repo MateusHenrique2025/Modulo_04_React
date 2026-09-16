@@ -1,42 +1,37 @@
-import { useContext, useEffect } from "react";
+import { Route, Routes } from "react-router";
+import ProtectedProgressRoute from "./components/ProtectedProgressRoute";
+import AppLayout from "./Layouts/AppLayout";
+import HabitsLayout from "./Layouts/HabitsLayout";
+import AboutPage from "./pages/AboutPage";
+import HabitDetailsPage from "./pages/HabitDetailsPage";
+import HabitsPage from "./pages/HabitsPage";
+import HomePage from "./pages/HomePage";
+import NewHabitPage from "./pages/NewHabitPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProgressPage from "./pages/ProgressPage";
 import "./App.css";
-import HabitForm from "./components/HabitForm";
-import HabitList from "./components/HabitList";
-import Panel from "./components/Panel";
-import { HabitsContext } from "./context/HabitsContext";
 
 export default function App() {
-  const habitsContext = useContext(HabitsContext);
-
-  if (!habitsContext) {
-    throw new Error("App precisa estar dentro de HabitsProvider.");
-  }
-
-  const { habits, completedCount } = habitsContext;
-
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = `${completedCount}/${habits.length} hábitos concluídos`;
-    return () => {
-      document.title = previousTitle;
-    };
-  }, [completedCount, habits.length]);
-
   return (
-    <main className="app">
-      <header className="hero">
-        <p className="eyebrow">MY DAILY HABITS</p>
-        <h1>Pequenos hábitos, progresso visível.</h1>
-        <p>{completedCount} de {habits.length} hábitos concluídos.</p>
-      </header>
-
-      <Panel title="Novo hábito">
-        <HabitForm />
-      </Panel>
-      
-      <Panel title="Hábitos de hoje">
-        <HabitList />
-      </Panel>
-    </main>
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="novo" element={<NewHabitPage />} />
+        <Route path="habitos" element={<HabitsLayout />}>
+          <Route index element={<HabitsPage />} />
+          <Route path=":habitId" element={<HabitDetailsPage />} />
+        </Route>
+        <Route
+          path="progresso"
+          element={
+            <ProtectedProgressRoute>
+              <ProgressPage />
+            </ProtectedProgressRoute>
+          }
+        />
+        <Route path="sobre" element={<AboutPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
